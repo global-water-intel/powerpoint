@@ -8,7 +8,7 @@ module Powerpoint
     class Pictorial
       include Powerpoint::Util
 
-    	attr_reader :image_name, :title, :coords, :image_path
+    	attr_reader :image_name, :title, :subtitle, :coords, :image_path
 
     	def initialize(options={})
 				require_arguments [:presentation, :title, :image_path], options

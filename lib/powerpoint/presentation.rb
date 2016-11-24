@@ -12,11 +12,11 @@ module Powerpoint
       @slides = []
     end
 
-    def add_intro(title, subtitile = nil)
+    def add_intro(title, subtitle = nil)
       existing_intro_slide = @slides.select {|s| s.class == Powerpoint::Slide::Intro}[0]
-      slide = Powerpoint::Slide::Intro.new(presentation: self, title: title, subtitile: subtitile)
+      slide = Powerpoint::Slide::Intro.new(presentation: self, title: title, subtitle: subtitle)
       if existing_intro_slide
-        @slides[@slides.index(existing_intro_slide)] = slide 
+        @slides[@slides.index(existing_intro_slide)] = slide
       else
         @slides.insert 0, slide
       end
@@ -26,8 +26,8 @@ module Powerpoint
       @slides << Powerpoint::Slide::Textual.new(presentation: self, title: title, content: content)
     end
 
-    def add_pictorial_slide(title, image_path, coords = {})
-      @slides << Powerpoint::Slide::Pictorial.new(presentation: self, title: title, image_path: image_path, coords: coords)
+    def add_pictorial_slide(title, subtitle, image_path, coords = {})
+      @slides << Powerpoint::Slide::Pictorial.new(presentation: self, title: title, subtitle: subtitle, image_path: image_path, coords: coords)
     end
 
     def add_text_picture_slide(title, image_path, content = [])
